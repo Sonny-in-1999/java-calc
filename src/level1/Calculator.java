@@ -7,8 +7,8 @@ public class Calculator {
         System.out.println("계산기를 실행합니다.");
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            int number1 = 0;
-            int number2 = 0;
+            int number1;
+            int number2;
 
             while (true) {
                 System.out.print("첫 번째 수를 입력해주세요(0 이상의 정수): ");
