@@ -1,8 +1,8 @@
-package level1;
+package level2;
 
 import java.util.Scanner;
 
-public class Calculator {
+public class App {
     public static void main(String[] args) {
         System.out.println("계산기를 실행합니다.");
         Scanner scanner = new Scanner(System.in);
