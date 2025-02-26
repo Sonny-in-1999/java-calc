@@ -1,5 +1,6 @@
 package level2;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,8 @@ public class Calculator {
     private char operator;
     private List<Result> resultList = new ArrayList<>();
 
-    public int getNumber1() {
-        return number1;
+    // this()
+    public Calculator() {
     }
 
     // this: 객체가 자기 자신을 가리키는 레퍼런스 변수
@@ -20,48 +21,53 @@ public class Calculator {
         this.number1 = number1;
     }
 
-    public int getNumber2() {
-        return number2;
-    }
-
     public void setNumber2(int number2) {
         this.number2 = number2;
-    }
-
-    public char getOperator() {
-        return operator;
     }
 
     public void setOperator(char operator) {
         this.operator = operator;
     }
 
-    public List<Result> getResultList() {
+    public List<Result> getResultMap() {
         return resultList;
     }
 
-    public void calculate() {
+    public void calculate() throws IllegalArgumentException {
+        int result;
+        LocalDateTime now = LocalDateTime.now();
         switch (operator) {
             case '+': {
-                Result result = new Result(number1 + " " + operator + " " + number2, number1 + number2);
-                resultList.add(result);
+                result = number1 + number2;
+                Result resultListItem = new Result(number1 + " " + operator + " " + number2, result, now);
+                resultList.add(resultListItem);
+                System.out.println("결과: " + result);
+                break;
             }
             case '-': {
-                Result result = new Result(number1 + " " + operator + " " + number2, number1 - number2);
-                resultList.add(result);
+                result = number1 - number2;
+                Result resultListItem = new Result(number1 + " " + operator + " " + number2, result, now);
+                resultList.add(resultListItem);
+                System.out.println("결과: " + result);
+                break;
             }
             case '*': {
-                Result result = new Result(number1 + " " + operator + " " + number2, number1 * number2);
-                resultList.add(result);
+                result = number1 * number2;
+                Result resultListItem = new Result(number1 + " " + operator + " " + number2, result, now);
+                resultList.add(resultListItem);
+                System.out.println("결과: " + result);
+                break;
             }
             case '/': {
-                Result result = new Result(number1 + " " + operator + " " + number2, number1 / number2);
-                resultList.add(result);
+                result = number1 / number2;
+                Result resultListItem = new Result(number1 + " " + operator + " " + number2, result, now);
+                resultList.add(resultListItem);
+                System.out.println("결과: " + result);
+                break;
+            }
+            default: {
+                throw new IllegalArgumentException("올바른 기호를 입력해주세요.");
             }
         }
-    }
-
-    // this()
-    public Calculator() {
     }
 }

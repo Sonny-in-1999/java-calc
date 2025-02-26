@@ -1,13 +1,7 @@
 package level2;
 
-public class Result {
+import java.time.LocalDateTime;
 
-    private final String operate;
+public record Result(String operate, int result, LocalDateTime createdAt) {
 
-    private final int result;
-
-    public Result(String operate, int result) {
-        this.operate = operate;
-        this.result = result;
-    }
 }
