@@ -96,8 +96,9 @@ public class App {
                 // 연산 기호 입력 및 검증
                 while (true) {
                     System.out.print("사칙연산 기호를 입력해주세요(+,-,*,/): ");
-                    char operator = scanner.next().charAt(0);
+                    char input = scanner.next().charAt(0);
                     try {
+                        Operator operator = Operator.fromSymbol(input);
                         calculator.setOperator(operator);
                         calculator.calculate();
                         break;

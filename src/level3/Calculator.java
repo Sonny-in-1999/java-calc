@@ -10,8 +10,8 @@ public class Calculator {
 
     private int number1;
     private int number2;
-    private char operator;
-    private List<Result> resultList = new ArrayList<>();
+    private Operator operator;
+    private final List<Result> resultList = new ArrayList<>();
 
     // this()
     public Calculator() {
@@ -27,7 +27,7 @@ public class Calculator {
         this.number2 = number2;
     }
 
-    public void setOperator(char operator) {
+    public void setOperator(Operator operator) {
         this.operator = operator;
     }
 
@@ -36,32 +36,31 @@ public class Calculator {
     }
 
     public void calculate() throws IllegalArgumentException {
-        int result;
         LocalDateTime now = LocalDateTime.now();
         switch (operator) {
-            case '+': {
-                result = number1 + number2;
+            case ADDITION: {
+                int result = number1 + number2;
                 Result resultListItem = new Result(number1 + " " + operator + " " + number2, result, now);
                 resultList.add(resultListItem);
                 System.out.println("결과: " + result);
                 break;
             }
-            case '-': {
-                result = number1 - number2;
+            case SUBTRACTION: {
+                int result = number1 - number2;
                 Result resultListItem = new Result(number1 + " " + operator + " " + number2, result, now);
                 resultList.add(resultListItem);
                 System.out.println("결과: " + result);
                 break;
             }
-            case '*': {
-                result = number1 * number2;
+            case MULTIPLICATION: {
+                int result = number1 * number2;
                 Result resultListItem = new Result(number1 + " " + operator + " " + number2, result, now);
                 resultList.add(resultListItem);
                 System.out.println("결과: " + result);
                 break;
             }
-            case '/': {
-                result = number1 / number2;
+            case DIVISION: {
+                int result = number1 / number2;
                 Result resultListItem = new Result(number1 + " " + operator + " " + number2, result, now);
                 resultList.add(resultListItem);
                 System.out.println("결과: " + result);
