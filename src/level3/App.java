@@ -1,18 +1,19 @@
 package level3;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        LocalDateTime now = LocalDateTime.now();
+        String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
         Scanner scanner = new Scanner(System.in);
-        Calculator calculator = new Calculator();
+        Calculator<Number> calculator = new Calculator<>();
 
-        outerLoop:
+        programLoop:
         while (true) {
             while (true) {
-                System.out.println("날짜 " + now.toLocalDate());
+                System.out.println("현재시각: " + now);
                 System.out.println("원하는 기능을 선택해주세요.");
                 System.out.println("1. 계산기 실행");
                 System.out.println("2. 계산 기록 조회");
@@ -22,14 +23,13 @@ public class App {
                 switch (input) {
                     case '1': {
                         System.out.println("계산기를 실행합니다.");
-                        scanner.nextLine();
                         break;
                     }
                     case '2': {
                         while (true) {
                             System.out.println("계산 기록을 조회합니다.");
                             System.out.println("----------------------------------------");
-                            calculator.getResultMap().stream()
+                            calculator.getResultList().stream()
                                     .sorted((r1, r2) -> r2.createdAt().compareTo(r1.createdAt())) // 최신순 정렬
                                     .forEach(result
                                             -> {
@@ -42,7 +42,7 @@ public class App {
                             scanner.nextLine();
                             String next = scanner.nextLine().trim();
                             if (next.isEmpty()) {
-                                continue outerLoop; // 외부 while문 처음으로 돌아감
+                                continue programLoop;
                             }
                         }
                     }
@@ -59,6 +59,7 @@ public class App {
             }
 
             // 첫 번째 정수 입력 및 검증
+            calcLoop:
             while (true) {
                 while (true) {
                     System.out.print("첫 번째 수를 입력해주세요(0 이상의 정수): ");
@@ -110,21 +111,20 @@ public class App {
 
                 // 계산기 종료 여부
                 while (true) {
-                    System.out.print("계산기를 종료하시겠습니까?(y/n): ");
+                    System.out.print("계산기를 계속 사용하시겠습니까?(y/n): ");
                     char endYn = scanner.next().charAt(0);
 
-                    if (endYn == 'n') {
+                    if (endYn == 'y') {
+                        System.out.println("다음 계산을 진행합니다.");
                         scanner.nextLine(); // 개행문자 처리(첫 번째 정수값 검증에서 예외처리 발생 예방)
-                        break; // 내부 while문 탈출 -> 외부 while문 다시 진행
-                    } else if (endYn == 'y') {
+                        continue calcLoop;
+                    } else if (endYn == 'n') {
                         System.out.println("계산기를 종료합니다.");
-                        scanner.close();
-                        return; // 프로그램 종료
+                        continue programLoop;
                     } else {
                         System.out.println("잘못된 입력입니다. 'y' 또는 'n' 중 하나를 입력해주세요.");
                     }
                 }
-                break;
             }
         }
     }
