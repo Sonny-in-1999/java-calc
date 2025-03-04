@@ -10,6 +10,7 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         Calculator<Number> calculator = new Calculator<>();
 
+        // 프로그램 실행 시 메뉴
         programLoop:
         while (true) {
             while (true) {
@@ -105,7 +106,6 @@ public class App {
                         break;
                     } catch (IllegalArgumentException e) {
                         System.out.println(e.getMessage());
-                        continue;
                     }
                 }
 
