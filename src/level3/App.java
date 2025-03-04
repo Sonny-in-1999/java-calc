@@ -62,35 +62,35 @@ public class App {
             calcLoop:
             while (true) {
                 while (true) {
-                    System.out.print("첫 번째 수를 입력해주세요(0 이상의 정수): ");
+                    System.out.print("첫 번째 수를 입력해주세요(0 이상): ");
                     String input = scanner.nextLine().trim();
                     try {
                         int number1 = Integer.parseInt(input);
                         if (number1 < 0) {
-                            System.out.println("0 이상의 정수를 입력해주세요.");
+                            System.out.println("0 이상의 수를 입력해주세요.");
                             continue;
                         }
                         calculator.setNumber1(number1);
                         break;
                     } catch (NumberFormatException e) {
-                        System.out.println("잘못 입력하셨습니다. 정수를 입력해주세요.");
+                        System.out.println("잘못 입력하셨습니다. 숫자를 입력해주세요.");
                     }
                 }
 
                 // 두 번째 정수 입력 및 검증
                 while (true) {
-                    System.out.print("두 번째 수를 입력해주세요(0 이상의 정수): ");
+                    System.out.print("두 번째 수를 입력해주세요(0 이상): ");
                     String input = scanner.nextLine().trim();
                     try {
                         int number2 = Integer.parseInt(input);
                         if (number2 < 0) {
-                            System.out.println("0 이상의 정수를 입력해주세요.");
+                            System.out.println("0 이상의 수를 입력해주세요.");
                             continue;
                         }
                         calculator.setNumber2(number2);
                         break;
                     } catch (NumberFormatException e) {
-                        System.out.println("잘못 입력하셨습니다. 정수를 입력해주세요.");
+                        System.out.println("잘못 입력하셨습니다. 숫자를 입력해주세요.");
                     }
                 }
 
