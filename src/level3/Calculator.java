@@ -34,7 +34,7 @@ public class Calculator<T extends Number> {
         return resultList;
     }
 
-    public void calculate() throws IllegalArgumentException {
+    public void calculate() throws IllegalArgumentException, ArithmeticException {
         String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
         final double result;
 

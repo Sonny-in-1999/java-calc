@@ -104,7 +104,7 @@ public class App {
                         calculator.setOperator(operator);
                         calculator.calculate();
                         break;
-                    } catch (IllegalArgumentException e) {
+                    } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
                 }
